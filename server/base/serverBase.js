@@ -5,8 +5,8 @@ const createError = require("http-errors")
 require("dotenv").config()
 
 class ServerBase {
-  constructor(isListenable = true) {
-    this.isListenable = isListenable
+  constructor() {
+    this.isListenable = true
     this.port = process.env.PORT
     this.host = process.env.HOST
     this.app = express()

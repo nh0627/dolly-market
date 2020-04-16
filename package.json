@@ -8,7 +8,6 @@
     "dev": "cross-env NODE_ENV=development nodemon server --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server",
-    "api": "cross-env NODE_ENV=api nodemon -r esm ./api/apiRunner",
     "generate": "nuxt generate",
     "test": "jest",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",

@@ -4,11 +4,11 @@ import morgan from "morgan"
 
 import { passportStrategy } from "./util"
 import { ServerBase } from "../server/base"
-const isListenable = process.env.NODE_ENV === "api"
 
 class APIServer extends ServerBase {
   constructor(routes) {
-    super(isListenable)
+    super()
+    this.isListenable = false
     this.routes = routes
   }
 
