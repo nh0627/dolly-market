@@ -13,13 +13,9 @@ export default {
   },
   methods: {
     async loginUser(userInfo) {
-      const { email, password } = userInfo
-      // this.$store.dispatch("authenticateUser", {
-      const result = await this.$axios.post(`/api/auth/login`, {
-        email,
-        password,
+      this.$auth.loginWith('local', {
+        data: userInfo
       })
-      console.log(result.data)
     },
   },
 }

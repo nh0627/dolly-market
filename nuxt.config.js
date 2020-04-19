@@ -36,7 +36,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  // Todo: loader로 부르기
+  // Todo: loader로 부르기  
   css: ["~/node_modules/bulma-ribbon/dist/css/bulma-ribbon.min.css"],
   /*
    ** Plugins to load before mounting the App
@@ -67,5 +67,20 @@ module.exports = {
    ** Server configuration
    */
   serverMiddleware: [{ path: "/api", handler: "~/api/index.js" }],
-  router: {},
+  /*
+   ** Authentification
+   */
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          // logout: { url: '/sessions', method: 'delete' },
+          // user: { url: '/sessions/user', method: 'get', propertyName: 'data.attributes' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
+  }
 }
