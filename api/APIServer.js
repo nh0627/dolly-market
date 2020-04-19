@@ -36,7 +36,7 @@ class APIServer extends ServerBase {
 
   errorHandler() {
     this.app.use((req, res, next) => {
-      console.log('hihi')
+      console.log("hihi")
       next(new createError(404))
     })
 

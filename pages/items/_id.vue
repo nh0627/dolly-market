@@ -7,7 +7,9 @@
             <div
               class="ribbon is-large"
               :class="item.status === 'On sale' ? 'is-primary' : 'is-danger'"
-            >{{ item.status }}</div>
+            >
+              {{ item.status }}
+            </div>
             <Carousel :images="item.images" />
           </div>
         </div>
@@ -20,7 +22,9 @@
             :tags="item.tags"
           />
           <section class="item-controls">
-            <b-button type="is-success" expanded>Buy Now</b-button>
+            <b-button type="is-success" expanded>
+              Buy Now
+            </b-button>
           </section>
         </div>
       </div>

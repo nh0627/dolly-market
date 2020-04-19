@@ -16,7 +16,11 @@ class AuthController extends ControllerBase {
         return errorToNext(err, next)
       } else {
         const token = issueToken(user)
-        return req.login(user, { session: false }, this.ok(res, { user, token }))
+        return req.login(
+          user,
+          { session: false },
+          this.ok(res, { user, token })
+        )
       }
     })(req, res)
   }

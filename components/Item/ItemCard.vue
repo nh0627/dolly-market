@@ -8,7 +8,7 @@
               :src="images[0].fileUrl"
               :alt="title"
               class="is-slightly-rounded"
-            >
+            />
           </figure>
         </div>
         <div class="card-content">
