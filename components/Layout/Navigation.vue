@@ -37,27 +37,25 @@
           </div>
         </div>
         </div>-->
-
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <nuxt-link to="/" class="navbar-item logo">
-                <b-button class="button is-primary">
-                  <strong>Sign up</strong>
-                </b-button>
-              </nuxt-link>
-              <nuxt-link to="/login" class="navbar-item logo">
-                <b-button class="button is-light">
-                  Log in
-                </b-button>
-              </nuxt-link>
-            </div>
+            <AuthControl />
           </div>
         </div>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+import AuthControl from "@/components/Layout/AuthControl"
+
+export default {
+  components: {
+    AuthControl,
+  },
+}
+</script>
 
 <style scoped>
 .logo {
