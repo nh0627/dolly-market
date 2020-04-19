@@ -34,9 +34,9 @@ class APIServer extends ServerBase {
     this.errorHandler()
   }
 
+  // Todo: 얘의 거취 고민
   errorHandler() {
     this.app.use((req, res, next) => {
-      console.log("hihi")
       next(new createError(404))
     })
 

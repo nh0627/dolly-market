@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 import { userQuery } from "../query"
 import ImageRepository from "./imageRepository"
 import { User, Image } from "../model"
-import { criptPassword } from "../../server/util"
+import { encriptPassword } from "../util"
 import { MySQLRepositoryBase } from "../../server/base/"
 
 class UserRepository extends MySQLRepositoryBase {
@@ -14,7 +14,7 @@ class UserRepository extends MySQLRepositoryBase {
   }
 
   async getAuth(email, password) {
-    const criptedPassword = criptPassword(password)
+    const criptedPassword = encriptPassword(password)
     let user = await this.executeQuery(
       this.query.getAuth(email, criptedPassword)
     )
@@ -56,7 +56,7 @@ class UserRepository extends MySQLRepositoryBase {
 
     // 비밀번호 암호화
     const _user = user
-    _user.password = criptPassword(password)
+    _user.password = encriptPassword(password)
     _user.pid = uuidv4()
     await this.executeQuery(this.query.save(_user))
   }

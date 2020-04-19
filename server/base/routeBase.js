@@ -1,5 +1,5 @@
 import { errorToNext } from "../../server/util"
-import { methods } from "../const"
+import { methods } from "../constant"
 
 class RouteBase {
   constructor(path, ControllerClass) {

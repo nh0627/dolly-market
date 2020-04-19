@@ -4,6 +4,8 @@ const JWTStrategy = passportJWT.Strategy
 const ExtractJWT = passportJWT.ExtractJwt
 import passportLocal from "passport-local"
 const LocalStrategy = passportLocal.Strategy
+import jwt from "jsonwebtoken"
+import crypto from "crypto"
 
 import { UserRepository } from "../repository"
 
@@ -41,4 +43,20 @@ export const passportStrategy = () => {
       }
     )
   )
+}
+
+export const issueToken = (user) => {
+  const token = jwt.sign(JSON.stringify(user), process.env.JWT_SECRET)
+  return token
+}
+
+export const encriptPassword = (password) => {
+  const inputPassword = password
+  const salt = process.env.PASSWORD_SECRET
+  const hashPassword = crypto
+    .createHash("sha512")
+    .update(inputPassword + salt)
+    .digest("hex")
+
+  return hashPassword
 }
