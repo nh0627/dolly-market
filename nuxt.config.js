@@ -76,7 +76,7 @@ module.exports = {
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
           // logout: { url: '/sessions', method: 'delete' },
-          // user: { url: '/sessions/user', method: 'get', propertyName: 'data.attributes' }
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'data.attributes' }
         },
         // tokenRequired: true,
         // tokenType: 'bearer'
