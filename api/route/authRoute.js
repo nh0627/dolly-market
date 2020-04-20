@@ -9,6 +9,7 @@ class AuthRoute extends RouteBase {
 
   addRoutes() {
     this.addRoute("/login", this.methods.POST, this.controller.login)
+    this.addRoute("/logout", this.methods.DELETE, this.controller.logout)
     this.addRoute("/user", this.methods.GET, this.controller.user)
     this.addRoute("/signup", this.methods.POST, this.controller.save)
   }

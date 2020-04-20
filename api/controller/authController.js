@@ -22,6 +22,11 @@ class AuthController extends ControllerBase {
     })(req, res)
   }
 
+  async logout(req, res) {
+    // Todo: 토큰 파기 로직
+    this.noContent(res)
+  }
+
   async user(req, res, next) {
     passport.authenticate("jwt", { session: false }, (err, user) => {
       if (!user) return next(createError(403, "Forbidden"))

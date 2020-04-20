@@ -13,7 +13,7 @@ class ControllerBase {
   }
 
   noContent(res) {
-    res.status(204)
+    res.status(204).send()
   }
 }
 

@@ -22,13 +22,13 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    let itemList = 
-      _itemList.map(async (item) => {
-        item = this.getUser(item)
-        return new Item(item)
-      }
-    )
-      
+    // Todo: 리팩토링
+    let itemList = _itemList.map((item) => {
+      item = this.getMasterImage(item)
+      item = this.getUser(item)
+      return new Item(item)
+    })
+
     // Todo: 이 부분 고민하기
     // item = await this.getImages(item)
     // item = await this.getTags(item)
