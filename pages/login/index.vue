@@ -17,9 +17,9 @@ export default {
         await this.$auth.loginWith("local", {
           data: userInfo,
         })
-        this.$buefy.snackbar.open(`Welcome ${this.$auth.user.nickname} 😘`)
+        this.$buefy.snackbar.open(`Welcome ${this.$auth.user.nickname}! 😘`)
       } catch (e) {
-        console.log(e)
+        this.$buefy.snackbar.open(`There was an issue. 🤔🤔 Please Try again.`)
       }
     },
   },
