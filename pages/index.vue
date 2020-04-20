@@ -2,7 +2,7 @@
   <div>
     <Hero />
     <div class="container">
-      <ItemList :items="getItems" />
+      <ItemList :items="items" />
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    getItems() {
+    items() {
       return this.$store.getters["item/getItems"]
     },
   },
