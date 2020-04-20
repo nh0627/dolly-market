@@ -13,9 +13,14 @@ export default {
   },
   methods: {
     async loginUser(userInfo) {
-      await this.$auth.loginWith("local", {
-        data: userInfo,
-      })
+      try {
+        await this.$auth.loginWith("local", {
+          data: userInfo,
+        })
+        this.$buefy.snackbar.open(`Welcome ${this.$auth.user.nickname} 😘`)
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }

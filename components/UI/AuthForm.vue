@@ -8,10 +8,7 @@
               <b-input v-if="hasName" v-model="userInfo.nickname" required />
             </b-field>
             <b-field label="Email">
-              <b-input
-                v-model="userInfo.email"
-                required
-              />
+              <b-input v-model="userInfo.email" required />
             </b-field>
             <b-field label="Password">
               <b-input

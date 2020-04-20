@@ -22,12 +22,15 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    let itemList = Promise.all(_itemList.map(async (item) => {
-      item = await this.getImages(item)
-      item = await this.getTags(item)
-      item = this.getUser(item)
-      return new Item(item)
-    }))
+    let itemList = Promise.all(
+      _itemList.map(async (item) => {
+        // Todo: 이 부분 고민하기
+        // item = await this.getImages(item)
+        // item = await this.getTags(item)
+        item = this.getUser(item)
+        return new Item(item)
+      })
+    )
 
     return itemList
   }

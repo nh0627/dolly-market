@@ -15,7 +15,7 @@
         />
       </div>
     </div>
-    <b-button :disabled="false" expanded @click="moreItems">
+    <b-button :disabled="false" expanded @click="loadMoreItems">
       Show More
     </b-button>
   </section>
@@ -33,17 +33,15 @@ export default {
       type: Array,
       required: true,
     },
+    loadMoreItems: {
+      type: Function,
+      required: true,
+    },
   },
   data() {
     return {
       pageNum: 1,
     }
-  },
-  methods: {
-    // Todo: disabled 처리 해야 함 => 리스트 메타 데이터 생성
-    async moreItems() {
-      await this.$store.dispatch("item/setMoreItems", ++this.pageNum)
-    },
   },
 }
 </script>
