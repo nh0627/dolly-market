@@ -5,17 +5,17 @@ require("dotenv").config()
 class MySQLRepositoryBase {
   constructor(query) {
     this.query = query
-  }
-
-  async executeQuery(query) {
-    const pool = mysql.createPool({
+    this.pool = mysql.createPool({
       host: process.env.DB_HOST,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
     })
+  }
 
-    const connection = await pool.getConnection(async (conn) => conn)
+  async executeQuery(query) {
+
+    const connection = await this.pool.getConnection(async (conn) => conn)
     await connection.beginTransaction()
 
     const [rows] = await connection.query(query)
