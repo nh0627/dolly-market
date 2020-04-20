@@ -27,7 +27,7 @@ class AuthController extends ControllerBase {
     passport.authenticate("jwt", { session: false }, (err, user) => {
       if (!user) return next(createError(403, "Forbidden"))
       if (err) errorToNext(err, next)
-      return this.ok({ user })
+      this.ok(res, { user })
     })(req, res)
   }
 

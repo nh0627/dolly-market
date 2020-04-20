@@ -77,9 +77,7 @@ module.exports = {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
           // logout: { url: '/sessions', method: 'delete' },
           user: { url: '/api/auth/user', method: 'get', propertyName: 'data.attributes' }
-        },
-        // tokenRequired: true,
-        // tokenType: 'bearer'
+        }
       }
     }
   }

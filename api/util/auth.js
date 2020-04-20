@@ -37,7 +37,7 @@ export const passportStrategy = () => {
       },
       (jwtPayload, done) => {
         return new UserRepository()
-          .getUserByEmail(jwtPayload.email)
+          .getByEmail(jwtPayload.email)
           .then((user) => done(null, user))
           .catch((err) => done(err))
       }
