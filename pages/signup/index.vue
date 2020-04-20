@@ -1,6 +1,10 @@
 <template>
   <section class="login hero is-primary is-fullheight">
-    <AuthForm buttonText="Register" :submitForm="registerUser" :hasName="true" />
+    <AuthForm
+      button-text="Register"
+      :submit-form="registerUser"
+      :has-name="true"
+    />
   </section>
 </template>
 
@@ -13,7 +17,7 @@ export default {
   },
   methods: {
     async registerUser(userInfo) {
-        alert("You pressed a button!")
+      alert("You pressed a button!")
     },
   },
 }

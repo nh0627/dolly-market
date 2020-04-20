@@ -1,6 +1,6 @@
 <template>
   <section class="login hero is-primary is-fullheight">
-    <AuthForm buttonText="Login" :submitForm="loginUser" :hasName="false"/>
+    <AuthForm button-text="Login" :submit-form="loginUser" :has-name="false" />
   </section>
 </template>
 
@@ -13,8 +13,8 @@ export default {
   },
   methods: {
     async loginUser(userInfo) {
-      this.$auth.loginWith('local', {
-        data: userInfo
+      await this.$auth.loginWith("local", {
+        data: userInfo,
       })
     },
   },

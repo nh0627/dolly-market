@@ -36,7 +36,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  // Todo: loader로 부르기  
+  // Todo: loader로 부르기
   css: ["~/node_modules/bulma-ribbon/dist/css/bulma-ribbon.min.css"],
   /*
    ** Plugins to load before mounting the App
@@ -74,11 +74,15 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
-          // logout: { url: '/sessions', method: 'delete' },
-          user: { url: '/api/auth/user', method: 'get', propertyName: 'data.attributes' }
-        }
-      }
-    }
-  }
+          login: {
+            url: "/api/auth/login",
+            method: "post",
+            propertyName: "token",
+          },
+          logout: { url: "/api/auth/logout", method: "delete" },
+          user: { url: "/api/auth/user", method: "get", propertyName: "user" },
+        },
+      },
+    },
+  },
 }
