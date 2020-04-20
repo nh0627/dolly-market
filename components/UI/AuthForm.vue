@@ -10,7 +10,6 @@
             <b-field label="Email">
               <b-input
                 v-model="userInfo.email"
-                placeholder="e.g. bobsmith@gmail.com"
                 required
               />
             </b-field>
@@ -56,7 +55,7 @@ export default {
     return {
       userInfo: {
         nickname: "",
-        email: "goshopping@test.com",
+        email: "",
         password: "",
       },
     }

@@ -1,10 +1,6 @@
 <template>
   <section class="login hero is-primary is-fullheight">
-    <AuthForm
-      button-text="Register"
-      :submit-form="registerUser"
-      :has-name="true"
-    />
+    <AuthForm button-text="Register" :submit-form="registerUser" :has-name="true" />
   </section>
 </template>
 
@@ -17,7 +13,10 @@ export default {
   },
   methods: {
     async registerUser(userInfo) {
-      alert("You pressed a button!")
+      await this.$axios.post('/api/auth/signup', userInfo)
+      this.$auth.loginWith("local", {
+        data: userInfo,
+      })
     },
   },
 }
