@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       title: "Dolly Market",
+      pageNum: 1
     }
   },
   computed: {

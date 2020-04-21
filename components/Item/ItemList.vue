@@ -38,10 +38,5 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      pageNum: 1,
-    }
-  },
 }
 </script>
