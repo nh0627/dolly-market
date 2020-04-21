@@ -4,7 +4,7 @@ import { itemQuery } from "../query"
 import { paging } from "../constant"
 import TagRepository from "./tagRepository"
 import ImageRepository from "./imageRepository"
-import { Image, Item, User } from "../model"
+import { Image, Item, User, Tag } from "../model"
 
 class ItemRepository extends MySQLRepositoryBase {
   constructor() {
@@ -22,14 +22,13 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    // Todo: 리팩토링
+    await this.getTagsByItemIds(_itemList)
+
     let itemList = _itemList.map((item) => {
       item = this.getMasterImage(item)
       item = this.getUser(item)
       return new Item(item)
     })
-
-    await this.getTagsByItemIds(_itemList)
 
     return itemList
   }
@@ -98,8 +97,11 @@ class ItemRepository extends MySQLRepositoryBase {
   }
 
   async getTagsByItemIds(_itemList) {
-    let itemIdList =_itemList.map(item => item.pid)
-    let tagList = await this.tagRepository.getByItemIds(itemIdList)
+    const itemIdList =_itemList.map(item => item.pid)
+    const tagsByItemId = await this.tagRepository.getByItemIds(itemIdList)
+
+    console.log(tagsByItemId)
+
   }
 
   async getTagsByItemId(item) {
