@@ -22,8 +22,9 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    await this.getTagsByItemIds(_itemList)
+    const tagsByItemId = await this.getTagsByItemIds(_itemList)
 
+    // Todo: 집에 가면 여기서 부터 
     let itemList = _itemList.map((item) => {
       item = this.getMasterImage(item)
       item = this.getUser(item)
@@ -99,8 +100,7 @@ class ItemRepository extends MySQLRepositoryBase {
   async getTagsByItemIds(_itemList) {
     const itemIdList = _itemList.map((item) => item.pid)
     const tagsByItemId = await this.tagRepository.getByItemIds(itemIdList)
-
-    console.log(tagsByItemId)
+    return tagsByItemId
   }
 
   async getTagsByItemId(item) {
