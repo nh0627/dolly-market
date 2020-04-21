@@ -29,9 +29,7 @@ class ItemRepository extends MySQLRepositoryBase {
       return new Item(item)
     })
 
-    // Todo: 이 부분 고민하기
-    // item = await this.getImages(item)
-    // item = await this.getTags(item)
+    await this.getTagsByItemIds(_itemList)
 
     return itemList
   }
@@ -46,8 +44,8 @@ class ItemRepository extends MySQLRepositoryBase {
     let item = _item[0]
 
     item = this.getUser(item)
-    item = await this.getImages(item)
-    item = await this.getTags(item)
+    item = await this.getImagesByItemId(item)
+    item = await this.getTagsByItemId(item)
     item = new Item(item)
 
     return item
@@ -99,7 +97,12 @@ class ItemRepository extends MySQLRepositoryBase {
     return _item
   }
 
-  async getTags(item) {
+  async getTagsByItemIds(_itemList) {
+    let itemIdList =_itemList.map(item => item.pid)
+    let tagList = await this.tagRepository.getByItemIds(itemIdList)
+  }
+
+  async getTagsByItemId(item) {
     const tagList = await this.tagRepository.getByItemId(item.pid)
     const _item = item
 
@@ -108,7 +111,7 @@ class ItemRepository extends MySQLRepositoryBase {
     return _item
   }
 
-  async getImages(item) {
+  async getImagesByItemId(item) {
     const imageList = await this.imageRepository.getByItemId(item.pid)
     const _item = item
 
