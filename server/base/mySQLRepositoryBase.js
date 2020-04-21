@@ -14,7 +14,6 @@ class MySQLRepositoryBase {
   }
 
   async executeQuery(query) {
-
     const connection = await this.pool.getConnection(async (conn) => conn)
     await connection.beginTransaction()
 

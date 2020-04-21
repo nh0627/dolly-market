@@ -15,9 +15,11 @@ class TagRepository extends MySQLRepositoryBase {
 
   async getByItemIds(itemIds) {
     const stringifiedIds = itemIds.join(`','`)
-    const _tagList = await this.executeQuery(this.query.getByItemIds(stringifiedIds))
+    const _tagList = await this.executeQuery(
+      this.query.getByItemIds(stringifiedIds)
+    )
     let tagsByItemId = {}
-    _tagList.forEach(tag => {
+    _tagList.forEach((tag) => {
       let itemId = tag.item_rid
       tagsByItemId[itemId] = tagsByItemId[itemId] ? tagsByItemId[itemId] : []
       tagsByItemId[itemId].push(new Tag(tag))

@@ -97,11 +97,10 @@ class ItemRepository extends MySQLRepositoryBase {
   }
 
   async getTagsByItemIds(_itemList) {
-    const itemIdList =_itemList.map(item => item.pid)
+    const itemIdList = _itemList.map((item) => item.pid)
     const tagsByItemId = await this.tagRepository.getByItemIds(itemIdList)
 
     console.log(tagsByItemId)
-
   }
 
   async getTagsByItemId(item) {

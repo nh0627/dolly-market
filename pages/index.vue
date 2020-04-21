@@ -2,7 +2,7 @@
   <div>
     <Hero />
     <div class="container">
-      <ItemList :items="items" :loadMoreItems="loadMoreItems"/>
+      <ItemList :items="items" :load-more-items="loadMoreItems" />
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       title: "Dolly Market",
-      pageNum: 1
+      pageNum: 1,
     }
   },
   computed: {

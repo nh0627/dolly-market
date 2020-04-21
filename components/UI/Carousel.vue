@@ -3,7 +3,7 @@
     <b-carousel-item v-for="(image, i) in images" :key="i">
       <section class="hero is-medium">
         <figure class="image">
-          <img :src="image.fileUrl" :alt="image.fileName" >
+          <img :src="image.fileUrl" :alt="image.fileName">
         </figure>
       </section>
     </b-carousel-item>

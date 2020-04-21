@@ -23,7 +23,7 @@ export default {
           data: userInfo,
         })
         this.$buefy.snackbar.open(`Welcome ${this.$auth.user.nickname}! 😘`)
-      } catch(e) {
+      } catch (e) {
         this.$buefy.snackbar.open(`There was an issue. 🤔🤔 Please Try again.`)
       }
     },
