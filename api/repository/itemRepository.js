@@ -22,10 +22,10 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    const tagsByItemId = await this.getTagsByItemIds(_itemList)
+    const tags = await this.getTagsByItemIds(_itemList)
 
-    // Todo: 집에 가면 여기서 부터 
     let itemList = _itemList.map((item) => {
+      item['tags'] = (tags[item.pid])? tags[item.pid] : []
       item = this.getMasterImage(item)
       item = this.getUser(item)
       return new Item(item)
