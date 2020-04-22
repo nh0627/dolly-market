@@ -21,6 +21,7 @@
             <h6>{{ title }}</h6>
             $ {{ price }}
           </div>
+          <Tag :tags="tags" />
         </div>
       </div>
     </article>
@@ -29,11 +30,13 @@
 
 <script>
 import UserBadge from "@/components/User/UserBadge"
+import Tag from "@/components/UI/Tag"
 
 export default {
   name: "ItemCard",
   components: {
     UserBadge,
+    Tag,
   },
   props: {
     pid: {
@@ -71,6 +74,10 @@ export default {
     createDate: {
       type: String,
       required: true,
+    },
+    tags: {
+      type: Array,
+      required: false,
     },
   },
 }

@@ -19,7 +19,7 @@ export default {
     async registerUser(userInfo) {
       try {
         await this.$axios.post("/api/auth/signup", userInfo)
-        this.$auth.loginWith("local", {
+        await this.$auth.loginWith("local", {
           data: userInfo,
         })
         this.$buefy.snackbar.open(`Welcome ${this.$auth.user.nickname}! 😘`)

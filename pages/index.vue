@@ -2,7 +2,7 @@
   <div>
     <Hero />
     <div class="container">
-      <ItemList :items="items" :load-more-items="loadMoreItems" />
+      <ItemList :items="items" :load-more-items="loadMoreItems" :isButtonAvailable="isThereMore"/>
     </div>
   </div>
 </template>
@@ -29,9 +29,11 @@ export default {
     items() {
       return this.$store.getters["item/getItems"]
     },
+    isThereMore() {
+      return this.pageNum * 8 > this.items.length
+    }
   },
   methods: {
-    // Todo: disabled 처리 해야 함 => 리스트 메타 데이터 생성
     async loadMoreItems() {
       await this.$store.dispatch("item/loadMoreItems", ++this.pageNum)
     },

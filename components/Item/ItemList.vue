@@ -12,10 +12,11 @@
           :user="item.user"
           :payment-method="item.paymentMethod"
           :create-date="item.createDate"
+          :tags="item.tags"
         />
       </div>
     </div>
-    <b-button :disabled="false" expanded @click="loadMoreItems">
+    <b-button :disabled="isButtonAvailable" expanded @click="loadMoreItems">
       Show More
     </b-button>
   </section>
@@ -37,6 +38,10 @@ export default {
       type: Function,
       required: true,
     },
+    isButtonAvailable: {
+      type: Boolean,
+      requried: true
+    }
   },
 }
 </script>

@@ -23,7 +23,7 @@ class UserRepository extends MySQLRepositoryBase {
       throw new createError(401, `User not Found: ${email}`)
     }
 
-    const user = retrievedUser[0]
+    let user = retrievedUser[0]
 
     const imgId = user.img_rid
     if (imgId) user.image = await this.getProfileImage(imgId)

@@ -8,11 +8,7 @@
         {{ description }}
       </p>
       <p class="subtitle is-3">$ {{ price }}</p>
-      <div class="tags are-medium">
-        <b-tag v-for="tag in tags" :key="tag.pid" type="is-primary">
-          {{ tag.name }}
-        </b-tag>
-      </div>
+      <Tag :tags="tags" />
     </div>
     <div class="box">
       <UserBadge
@@ -26,10 +22,12 @@
 
 <script>
 import UserBadge from "@/components/User/UserBadge"
+import Tag from "@/components/UI/Tag"
 
 export default {
   components: {
     UserBadge,
+    Tag,
   },
   props: {
     title: {
