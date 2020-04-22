@@ -22,12 +22,13 @@ class ItemRepository extends MySQLRepositoryBase {
       )
     )
 
-    const tags = await this.getTagsByItemIds(_itemList)
+    const itemIdList = _itemList.map((item) => item.pid)
+    const tags = await this.getTagsByItemIds(itemIdList)
 
     let itemList = _itemList.map((item) => {
-      item['tags'] = (tags[item.pid])? tags[item.pid] : []
-      item = this.getMasterImage(item)
-      item = this.getUser(item)
+      item["tags"] = tags[item.pid] ? tags[item.pid] : []
+      item["images"] = this.getMasterImage(item)
+      item["user"] = this.getUser(item)
       return new Item(item)
     })
 
@@ -43,9 +44,9 @@ class ItemRepository extends MySQLRepositoryBase {
 
     let item = _item[0]
 
-    item = this.getUser(item)
-    item = await this.getImagesByItemId(item)
-    item = await this.getTagsByItemId(item)
+    item["user"] = this.getUser(item)
+    item["images"] = await this.getImagesByItemId(item)
+    item["tags"] = await this.getTagsByItemId(item)
     item = new Item(item)
 
     return item
@@ -62,7 +63,7 @@ class ItemRepository extends MySQLRepositoryBase {
 
     const profileImage = new Image(_profileImage)
 
-    const user = {
+    let user = {
       pid: item.user_pid,
       create_date: item.user_create_date,
       modify_date: item.user_modify_date,
@@ -71,10 +72,9 @@ class ItemRepository extends MySQLRepositoryBase {
       image: profileImage,
     }
 
-    const _item = item
-    _item["user"] = new User(user)
+    user = new User(user)
 
-    return _item
+    return user
   }
 
   getMasterImage(item) {
@@ -90,35 +90,23 @@ class ItemRepository extends MySQLRepositoryBase {
 
     const imageArr = []
     imageArr.push(new Image(masterImage))
-    const _item = item
 
-    _item["images"] = imageArr
-
-    return _item
+    return imageArr
   }
 
-  async getTagsByItemIds(_itemList) {
-    const itemIdList = _itemList.map((item) => item.pid)
+  async getTagsByItemIds(itemIdList) {
     const tagsByItemId = await this.tagRepository.getByItemIds(itemIdList)
     return tagsByItemId
   }
 
   async getTagsByItemId(item) {
     const tagList = await this.tagRepository.getByItemId(item.pid)
-    const _item = item
-
-    _item["tags"] = tagList
-
-    return _item
+    return tagList
   }
 
   async getImagesByItemId(item) {
     const imageList = await this.imageRepository.getByItemId(item.pid)
-    const _item = item
-
-    _item["images"] = imageList
-
-    return _item
+    return imageList
   }
 }
 

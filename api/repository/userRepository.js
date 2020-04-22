@@ -15,18 +15,20 @@ class UserRepository extends MySQLRepositoryBase {
 
   async getAuth(email, password) {
     const criptedPassword = encriptPassword(password)
-    let user = await this.executeQuery(
+    const retrievedUser = await this.executeQuery(
       this.query.getAuth(email, criptedPassword)
     )
 
-    if (user.length == 0 || !user) {
+    if (retrievedUser.length == 0 || !retrievedUser) {
       throw new createError(401, `User not Found: ${email}`)
     }
 
-    const imgId = user.img_rid
-    if (imgId) user = await this.getProfileImage(imgId)
+    const user = retrievedUser[0]
 
-    user = new User(user[0])
+    const imgId = user.img_rid
+    if (imgId) user.image = await this.getProfileImage(imgId)
+
+    user = new User(user)
 
     return user
   }
@@ -34,17 +36,14 @@ class UserRepository extends MySQLRepositoryBase {
   async getByEmail(email) {
     let user = await this.executeQuery(this.query.getByEmail(email))
     user = user[0] ? new User(user[0]) : user
-
     return user
   }
 
   async getProfileImage(user) {
     const userId = user.pid
-    const image = await this.imageRepository.getByUserId(userId)
-    const _user = user
-    _user.image = new Image(image[0])
-
-    return _user
+    const _image = await this.imageRepository.getByUserId(userId)
+    const image = new Image(_image[0])
+    return image
   }
 
   async save(user) {
