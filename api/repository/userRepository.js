@@ -39,10 +39,8 @@ class UserRepository extends MySQLRepositoryBase {
     return user
   }
 
-  async getProfileImage(user) {
-    const userId = user.pid
-    const _image = await this.imageRepository.getByUserId(userId)
-    const image = new Image(_image[0])
+  async getProfileImage(imgId) {
+    const image = await this.imageRepository.getById(imgId)
     return image
   }
 
