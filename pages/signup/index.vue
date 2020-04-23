@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AuthForm from "@/components/UI/AuthForm"
+import AuthForm from "@/components/User/AuthForm"
 
 export default {
   components: {

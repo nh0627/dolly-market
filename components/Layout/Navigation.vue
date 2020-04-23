@@ -1,33 +1,29 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="container">
-      <div class="navbar-brand">
-        <nuxt-link to="/" class="navbar-item logo">
-          Dolly Market
-        </nuxt-link>
-        <a
-          role="button"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <AuthControl />
-        </div>
-      </div>
-    </div>
-  </nav>
+  <div class="container">
+    <b-navbar>
+      <template slot="brand">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          <p class="logo">Dolly Market</p>
+        </b-navbar-item>
+      </template>
+      <template slot="start">
+        <b-navbar-item href="#">Home</b-navbar-item>
+        <b-navbar-item href="#">Documentation</b-navbar-item>
+        <b-navbar-dropdown label="Info">
+          <b-navbar-item href="#">About</b-navbar-item>
+          <b-navbar-item href="#">Contact</b-navbar-item>
+        </b-navbar-dropdown>
+      </template>
+
+      <template slot="end">
+        <AuthControl />
+      </template>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
-import AuthControl from "@/components/Layout/AuthControl"
+import AuthControl from "@/components/User/AuthControl"
 
 export default {
   components: {
