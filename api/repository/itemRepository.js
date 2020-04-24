@@ -5,6 +5,7 @@ import { paging } from "../constant"
 import TagRepository from "./tagRepository"
 import ImageRepository from "./imageRepository"
 import { Image, Item, User } from "../model"
+import { v4 as uuidv4 } from "uuid"
 
 class ItemRepository extends MySQLRepositoryBase {
   constructor() {
@@ -107,6 +108,12 @@ class ItemRepository extends MySQLRepositoryBase {
   async getImagesByItemId(item) {
     const imageList = await this.imageRepository.getByItemId(item.pid)
     return imageList
+  }
+
+  // Todo: 모델로 감싸야함
+  async save(item) {
+    item.pid = uuidv4()
+    await this.executeQuery(this.query.save(item))
   }
 }
 

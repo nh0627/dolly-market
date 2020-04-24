@@ -38,8 +38,7 @@ class AuthController extends ControllerBase {
   async save(req, res) {
     const user = req.body
     await this.repository.save(user)
-    const { email } = user
-    this.created(res, { email })
+    this.created(res)
   }
 }
 

@@ -52,10 +52,9 @@ class UserRepository extends MySQLRepositoryBase {
       throw new createError(409, `User Already Exists: ${email}`)
 
     // 비밀번호 암호화
-    const _user = user
-    _user.password = encriptPassword(password)
-    _user.pid = uuidv4()
-    await this.executeQuery(this.query.save(_user))
+    user.password = encriptPassword(password)
+    user.pid = uuidv4()
+    await this.executeQuery(this.query.save(user))
   }
 }
 

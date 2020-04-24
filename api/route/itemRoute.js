@@ -10,6 +10,7 @@ class ItemRoute extends RouteBase {
   addRoutes() {
     this.addRoute("/", this.methods.GET, this.controller.get)
     this.addRoute("/:pid", this.methods.GET, this.controller.getById)
+    this.addRoute("/", this.methods.POST, this.controller.save)
   }
 }
 

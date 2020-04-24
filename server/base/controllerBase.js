@@ -8,8 +8,8 @@ class ControllerBase {
     res.json(data)
   }
 
-  created(res, data) {
-    res.status(201).json(data)
+  created(res) {
+    res.status(201).send()
   }
 
   noContent(res) {
