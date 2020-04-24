@@ -2,16 +2,6 @@
   <div class="navbar-item">
     <div class="buttons">
       <div v-if="$auth.loggedIn">
-        <!-- <b-navbar-dropdown label="`${$auth.user.nickname}`">
-          <b-navbar-item href="#">About</b-navbar-item>
-          <b-navbar-item href="#">Contact</b-navbar-item>
-        </b-navbar-dropdown>
-        <b-button class="button is-light">
-          <strong></strong>
-        </b-button>
-        <b-button class="button is-light" @click="$auth.logout()">
-          <strong>Logout</strong>
-        </b-button> -->
         <UserDropdown />
       </div>
       <div v-else>
