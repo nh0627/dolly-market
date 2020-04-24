@@ -2,7 +2,11 @@
   <div>
     <Hero />
     <div class="container">
-      <ItemList :items="items" :load-more-items="loadMoreItems" :isButtonAvailable="isThereMore"/>
+      <ItemList
+        :items="items"
+        :load-more-items="loadMoreItems"
+        :is-button-available="isThereMore"
+      />
     </div>
   </div>
 </template>
@@ -31,7 +35,7 @@ export default {
     },
     isThereMore() {
       return this.pageNum * 8 > this.items.length
-    }
+    },
   },
   methods: {
     async loadMoreItems() {

@@ -40,8 +40,8 @@ export default {
     },
     isButtonAvailable: {
       type: Boolean,
-      requried: true
-    }
+      requried: true,
+    },
   },
 }
 </script>

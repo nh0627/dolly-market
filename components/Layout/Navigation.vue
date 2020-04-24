@@ -3,15 +3,25 @@
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <p class="logo">Dolly Market</p>
+          <p class="logo">
+            Dolly Market
+          </p>
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item href="#">Home</b-navbar-item>
-        <b-navbar-item href="#">Documentation</b-navbar-item>
+        <b-navbar-item href="#">
+          Home
+        </b-navbar-item>
+        <b-navbar-item href="#">
+          Documentation
+        </b-navbar-item>
         <b-navbar-dropdown label="Info">
-          <b-navbar-item href="#">About</b-navbar-item>
-          <b-navbar-item href="#">Contact</b-navbar-item>
+          <b-navbar-item href="#">
+            About
+          </b-navbar-item>
+          <b-navbar-item href="#">
+            Contact
+          </b-navbar-item>
         </b-navbar-dropdown>
       </template>
 

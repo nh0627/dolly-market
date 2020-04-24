@@ -1,5 +1,5 @@
 <template>
-  <section class="item-detail section">
+  <section class="section item-detail">
     <div class="content is-medium">
       <p class="title">
         {{ title }}
@@ -16,6 +16,11 @@
         :nickname="user.nickname"
         :email="user.email"
       />
+    </div>
+    <div class="item-controls">
+      <b-button type="is-success" expanded>
+        Buy Now
+      </b-button>
     </div>
   </section>
 </template>

@@ -1,12 +1,15 @@
 <template>
-    <ItemForm />
+  <DashBoard />
+  <!-- <ItemForm /> -->
 </template>
 
 <script>
 import ItemForm from "@/components/Item/ItemForm"
+import DashBoard from "@/components/Layout/Dashboard"
 export default {
-    components: {
-        ItemForm
-    }
+  components: {
+    ItemForm,
+    DashBoard,
+  },
 }
 </script>
