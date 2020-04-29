@@ -1,9 +1,9 @@
 <template>
   <div class="columns is-centered is-bold">
     <div class="column">
-      <form @submit.prevent>
-        <b-field v-model="item.title" label="Title">
-          <b-input required />
+      <form @submit.prevent="submitForm(item)">
+        <b-field label="Title">
+          <b-input v-model="item.title" required />
         </b-field>
         <b-field label="Description">
           <b-input v-model="item.description" required />
@@ -35,10 +35,6 @@ export default {
     return {
       buttonText: "Sell it🧸",
       item: {
-        title: "",
-        description: "",
-        password: "",
-        price: "",
       },
     }
   },
