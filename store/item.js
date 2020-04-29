@@ -1,6 +1,5 @@
 export const state = () => ({
   items: [],
-  item: {},
 })
 
 export const mutations = {
@@ -9,9 +8,6 @@ export const mutations = {
   },
   SET_MORE_ITEMS({ items }, moreItems) {
     items.push(...moreItems)
-  },
-  SET_ITEM(state, item) {
-    state.item = item
   },
 }
 
@@ -60,8 +56,10 @@ export const actions = {
     const { data } = await this.$axios.get(`/api/items?pageNum=${pageNum}`)
     commit("SET_MORE_ITEMS", data)
   },
-  async loadItem({ commit }, id) {
-    const { data } = await this.$axios.get(`/api/items/${id}`)
-    commit("SET_ITEM", data)
-  },
+  async registerItem({ dispatch }, item) {
+    item.userId = this.$auth.user.pid
+    await this.$axios.post(`/api/items`, item)
+    await dispatch("item/loadItems")
+    this.$router.push("/")
+  }
 }

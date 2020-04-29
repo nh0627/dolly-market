@@ -34,12 +34,11 @@ export default {
     ItemSummary,
     Carousel,
   },
-  async asyncData({ params, store }) {
-    const itemId = params.id
-
-    await store.dispatch("item/loadItem", itemId)
-    const item = store.getters["item/getItem"]
-
+  async asyncData({ app, params, store }) {
+    const itemId = params.id 
+    const items = store.getters["item/getItems"]
+    let item = items.find( item => item.pid === itemId)
+    item = item ? item : await app.$axios.$get(`/api/items/${itemId}`)
     return { item }
   },
 }
