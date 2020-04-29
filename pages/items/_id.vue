@@ -27,7 +27,7 @@
 </template>
 <script>
 import ItemSummary from "@/components/Item/ItemSummary"
-import Carousel from "@/components/UI/Carousel"
+import Carousel from "@/components/Common/Carousel"
 
 export default {
   components: {

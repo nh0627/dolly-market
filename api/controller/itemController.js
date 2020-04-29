@@ -1,7 +1,6 @@
 import { ItemRepository } from "../repository"
 import { ControllerBase } from "../../server/base"
 
-
 class ItemController extends ControllerBase {
   constructor() {
     super(ItemRepository)

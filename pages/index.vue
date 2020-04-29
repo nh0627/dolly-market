@@ -13,7 +13,7 @@
 
 <script>
 import ItemList from "@/components/Item/ItemList"
-import Hero from "@/components/UI/Hero"
+import Hero from "@/components/Common/Hero"
 
 export default {
   components: {

@@ -110,7 +110,6 @@ class ItemRepository extends MySQLRepositoryBase {
     return imageList
   }
 
-  // Todo: 모델로 감싸야함
   async save(item) {
     item.pid = uuidv4()
     await this.executeQuery(this.query.save(item))

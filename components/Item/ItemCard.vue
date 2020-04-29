@@ -30,7 +30,7 @@
 
 <script>
 import UserBadge from "@/components/User/UserBadge"
-import Tag from "@/components/UI/Tag"
+import Tag from "@/components/Common/Tag"
 
 export default {
   name: "ItemCard",
