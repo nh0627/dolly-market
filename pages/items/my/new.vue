@@ -1,14 +1,16 @@
 <template>
-  <DashBoard />
+  <div class="box content">
+    <h4 class="title">Selling an item</h4>
+    <ItemForm />
+  </div>
 </template>
 
 <script>
 import ItemForm from "@/components/Item/ItemForm"
-import DashBoard from "@/components/Layout/Dashboard"
+
 export default {
   components: {
     ItemForm,
-    DashBoard,
   },
 }
 </script>

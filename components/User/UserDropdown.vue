@@ -8,7 +8,7 @@
       <b-icon icon="menu-down" />
     </a>
     <b-dropdown-item has-link aria-role="menuitem">
-      <nuxt-link to="/items/my"> <b-icon icon="heart" />My items </nuxt-link>
+      <nuxt-link to="/items/my/new"> <b-icon icon="heart" />My items </nuxt-link>
     </b-dropdown-item>
     <hr class="dropdown-divider" aria-role="menuitem">
     <b-dropdown-item value="settings">
