@@ -42,9 +42,6 @@ export const getters = {
     })
     return items
   },
-  getItem({ item }) {
-    return item
-  },
 }
 
 export const actions = {
